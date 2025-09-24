@@ -1188,6 +1188,45 @@ main {
   width: 100%;
 }
 
+.campaign-actions {
+  margin-top: 1.4rem;
+  width: 100%;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.campaign-link-button {
+  background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+  color: #000;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 2px solid #fff;
+  border-radius: 0.7rem;
+  padding: 0.6rem 1.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 3px 12px rgba(255,255,255,0.12);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.campaign-link-button:hover {
+  background: linear-gradient(135deg, #000 0%, #111 100%);
+  color: #fff;
+  border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,255,255,0.25);
+}
+
+.campaign-link-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+}
+
 .campaign-logo {
   width: 100%;
   max-width: 140px;
