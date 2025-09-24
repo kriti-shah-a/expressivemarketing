@@ -1193,11 +1193,12 @@ main {
   width: 100%;
   display: flex;
   gap: 0.8rem;
+  justify-content: center;
 }
 
 .campaign-link-button {
-  background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
-  color: #000;
+  background: linear-gradient(135deg, #000 0%, #111 100%);
+  color: #fff;
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
@@ -1215,8 +1216,8 @@ main {
 }
 
 .campaign-link-button:hover {
-  background: linear-gradient(135deg, #000 0%, #111 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+  color: #000;
   border-color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(255,255,255,0.25);
