@@ -217,3 +217,89 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Campaign carousel scroll functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const campaignCards = document.querySelector('.campaign-cards');
+  const scrollLeftBtn = document.querySelector('.campaign-side-arrow-left');
+  const scrollRightBtn = document.querySelector('.campaign-side-arrow-right');
+  const fadeLeft = document.querySelector('.campaign-scroll-fade-left');
+  const fadeRight = document.querySelector('.campaign-scroll-fade-right');
+  
+  if (campaignCards && scrollLeftBtn && scrollRightBtn) {
+    const cardWidth = 350; // min-width of campaign card
+    const gap = 40; // gap between cards (2.5rem = 40px)
+    const scrollAmount = cardWidth + gap;
+    
+    function updateButtons() {
+      const isAtStart = campaignCards.scrollLeft <= 10;
+      const isAtEnd = campaignCards.scrollLeft >= campaignCards.scrollWidth - campaignCards.clientWidth - 10;
+      
+      scrollLeftBtn.disabled = isAtStart;
+      scrollRightBtn.disabled = isAtEnd;
+      
+      // Update fade gradients
+      if (fadeLeft && fadeRight) {
+        if (isAtStart) {
+          fadeLeft.classList.remove('visible');
+        } else {
+          fadeLeft.classList.add('visible');
+        }
+        
+        if (isAtEnd) {
+          fadeRight.classList.add('hidden');
+        } else {
+          fadeRight.classList.remove('hidden');
+        }
+      }
+      
+    }
+    
+    scrollLeftBtn.addEventListener('click', () => {
+      campaignCards.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+    
+    scrollRightBtn.addEventListener('click', () => {
+      campaignCards.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+    
+    campaignCards.addEventListener('scroll', updateButtons);
+    updateButtons(); // Initial check
+    
+    // Also support touch/swipe on mobile
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    campaignCards.addEventListener('mousedown', (e) => {
+      isDown = true;
+      campaignCards.style.cursor = 'grabbing';
+      startX = e.pageX - campaignCards.offsetLeft;
+      scrollLeft = campaignCards.scrollLeft;
+    });
+    
+    campaignCards.addEventListener('mouseleave', () => {
+      isDown = false;
+      campaignCards.style.cursor = 'grab';
+    });
+    
+    campaignCards.addEventListener('mouseup', () => {
+      isDown = false;
+      campaignCards.style.cursor = 'grab';
+    });
+    
+    campaignCards.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - campaignCards.offsetLeft;
+      const walk = (x - startX) * 2;
+      campaignCards.scrollLeft = scrollLeft - walk;
+    });
+  }
+});
