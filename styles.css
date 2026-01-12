@@ -2328,6 +2328,47 @@ main {
   margin: 0 auto;
 }
 
+/* New Interns Grid - Image Only Layout */
+.interns-grid-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.intern-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  cursor: pointer;
+  aspect-ratio: 1;
+  background: #111;
+  border: 2px solid rgba(255,255,255,0.1);
+  will-change: transform;
+  contain: layout style paint;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.intern-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.intern-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+  display: block;
+  transform: translateZ(0);
+}
+
+.intern-card:hover .intern-image {
+  transform: scale(1.03) translateZ(0);
+}
+
+/* Legacy grid styles - keeping for backwards compatibility */
 .interns-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2348,6 +2389,139 @@ main {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(255,255,255,0.1);
   border-color: rgba(255,255,255,0.2);
+}
+
+/* Intern Modal */
+.intern-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.intern-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.intern-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.intern-modal-content {
+  position: relative;
+  background: linear-gradient(135deg, #000 0%, #111 100%);
+  border: 2px solid #fff;
+  border-radius: 1.5rem;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 2001;
+  transform: scale(0.95) translateZ(0);
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intern-modal.active .intern-modal-content {
+  transform: scale(1) translateZ(0);
+}
+
+.intern-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2002;
+  will-change: transform, background-color, color;
+  transition: transform 0.2s ease-out, background-color 0.2s ease-out, color 0.2s ease-out;
+  line-height: 1;
+  padding: 0;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  transform: translateZ(0);
+}
+
+.intern-modal-close:hover {
+  background: #fff;
+  color: #000;
+  transform: rotate(90deg) translateZ(0);
+}
+
+.intern-modal-body {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.intern-modal-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin: 0 auto 2rem auto;
+  display: block;
+}
+
+.intern-modal-info {
+  text-align: center;
+}
+
+.intern-modal-name {
+  color: #fff;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.intern-modal-role {
+  color: #fff;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.intern-modal-bio {
+  color: #fff;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.intern-modal-bio a {
+  color: #fff;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -2401,6 +2575,11 @@ main {
     padding: 3rem 1.5rem;
   }
 
+  .interns-grid-new {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.25rem;
+  }
+
   .interns-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -2408,6 +2587,33 @@ main {
 
   .intern-member {
     padding: 1.5rem;
+  }
+
+  .intern-modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .intern-modal-body {
+    padding: 1.5rem;
+  }
+
+  .intern-modal-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1.5rem;
+  }
+
+  .intern-modal-name {
+    font-size: 1.6rem;
+  }
+
+  .intern-modal-role {
+    font-size: 1rem;
+  }
+
+  .intern-modal-bio {
+    font-size: 0.95rem;
   }
 }
 
@@ -2457,7 +2663,50 @@ main {
     padding: 2rem 1rem;
   }
 
+  .interns-grid-new {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
   .intern-member {
     padding: 1.5rem 1rem;
+  }
+
+  .intern-modal-content {
+    width: 98%;
+    max-height: 98vh;
+    border-radius: 1rem;
+  }
+
+  .intern-modal-body {
+    padding: 1.25rem;
+  }
+
+  .intern-modal-image {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.25rem;
+  }
+
+  .intern-modal-name {
+    font-size: 1.4rem;
+  }
+
+  .intern-modal-role {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .intern-modal-bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .intern-modal-close {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
   }
 } 
