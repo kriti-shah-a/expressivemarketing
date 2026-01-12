@@ -113,6 +113,26 @@ h1, h2, h3, h4, .em-logo-main, .splash-logo, .section-title {
   color: #fff;
   border-bottom: 2px solid #fff;
 }
+
+/* Highlighted navbar link - Our Internship */
+.navbar-menu a.navbar-highlight {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu a.navbar-highlight:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+}
 .navbar-logo-link {
   text-decoration: none;
   display: flex;
@@ -258,6 +278,17 @@ main {
   margin-top: -4.2rem;
   padding-top: 4.2rem;
   box-sizing: border-box;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  padding-top: 12rem;
 }
 .hero-heading {
   font-size: 2.5rem;
@@ -1083,6 +1114,26 @@ main {
   .navbar-menu a:hover {
     background: rgba(255,255,255,0.1);
     border-bottom: 1px solid #fff;
+  }
+  
+  /* Mobile styling for highlighted navbar link */
+  .navbar-menu a.navbar-highlight {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    font-weight: 600;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  
+  .navbar-menu a.navbar-highlight:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+    transform: none;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
   }
   
   /* Sections */
