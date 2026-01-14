@@ -1120,18 +1120,23 @@ main {
   .navbar-menu a.navbar-highlight {
     background: rgba(255,255,255,0.1);
     color: #fff;
-    padding: 0.8rem 1.2rem;
+    padding: 0.8rem 1rem;
     border-radius: 0.5rem;
     border: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
     font-weight: 600;
-    margin-top: 0.5rem;
+    margin: 0.5rem 0;
     text-align: center;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
   
   .navbar-menu a.navbar-highlight:hover {
     background: rgba(255,255,255,0.15);
     color: #fff;
     border-color: rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
     transform: none;
     box-shadow: 0 2px 8px rgba(255,255,255,0.1);
   }
