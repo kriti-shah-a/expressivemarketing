@@ -2378,6 +2378,8 @@ main {
   max-width: 1200px;
   margin: 0.5rem auto;
   border-radius: 2rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .interns-container {
@@ -2391,6 +2393,7 @@ main {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
   margin-top: 3rem;
+  contain: layout style paint;
 }
 
 .intern-card {
@@ -2423,6 +2426,77 @@ main {
 
 .intern-card:hover .intern-image {
   transform: scale(1.03) translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intern-card,
+  .intern-image {
+    transition: none !important;
+  }
+
+  .intern-card:hover,
+  .intern-card:hover .intern-image {
+    transform: none !important;
+  }
+}
+
+/* Desktop polish for interns section */
+@media (min-width: 900px) {
+  .interns-section {
+    padding: 1.25rem 2.5rem 4.5rem 2.5rem;
+  }
+
+  .interns-container {
+    max-width: 1200px;
+  }
+
+  .interns-grid-new {
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .intern-card {
+    border-radius: 1.25rem;
+    border-color: rgba(255,255,255,0.14);
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 100%);
+  }
+
+  .intern-card:hover {
+    border-color: rgba(255,255,255,0.28);
+  }
+
+  .intern-modal-body {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.25rem;
+    padding: 2.25rem;
+  }
+
+  .intern-modal-image {
+    width: 220px;
+    height: 220px;
+    margin: 0;
+    flex: 0 0 auto;
+  }
+
+  .intern-modal-info {
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .intern-modal-name {
+    font-size: 2.2rem;
+  }
+
+  .intern-modal-role {
+    margin-bottom: 1.25rem;
+  }
+
+  .intern-modal-bio {
+    font-size: 1.02rem;
+    line-height: 1.75;
+  }
 }
 
 /* Legacy grid styles - keeping for backwards compatibility */
